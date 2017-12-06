@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = email_settings.EMAIL_HOST
+EMAIL_HOST_USER = email_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
+EMAIL_PORT = email_settings.EMAIL_PORT
+EMAIL_USE_TLS = email_settings.EMAIL_USE_TLS
+
+ADMINS = [('Eugene', EMAIL_HOST_USER)]
+MANAGERS = ADMINS
 
 # Application definition
 

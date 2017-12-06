@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-from . import database_settings
+from . import database_settings, email_settings
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = email_settings.EMAIL_HOST
+EMAIL_HOST_USER = email_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
+EMAIL_PORT = email_settings.EMAIL_PORT
+EMAIL_USE_TLS = email_settings.EMAIL_USE_TLS
+
+
+ADMINS = [('Eugene', EMAIL_HOST_USER)]
+MANAGERS = ADMINS
 
 # Application definition
 
