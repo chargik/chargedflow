@@ -1,0 +1,39 @@
+{% load static %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="{% static 'img/logo_1.png' %}" alt="TravelLab"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="tel:+375293694589">+375-29-369-45-89</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tel:+375297779723">+375-29-777-97-23</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tel:+375259016706">+375-25-901-67-06</a>
+            </li>
+          </ul>
+<!--           <ul class="nav navbar-nav navbar-right">
+            <li><a class="text-muted" href="tel:+375293694589">+375-29-369-45-89</a></li>
+            <li><a class="text-muted" href="tel:+375297779723">+375-29-777-97-23</a></li>
+            <li><a class="text-muted" href="tel:+375259016706">+375-25-901-67-06</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </nav>

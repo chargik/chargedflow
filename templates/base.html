@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="{{ object.head_description }}">
+    <meta name="keywords" content="{{ object.head_keywords }}"> -->
+    <meta name="author" content="chargedflow">
+    <!-- <link rel="shortcut icon" href="{% static '/img/favicon.png' %}" type="image/png"> -->
+    <!-- Put this script tag to the <head> of your page -->
+    {% include 'snippets/css.html' %}
+    <!-- <title>{% block head_title %}Travel Lab | {% endblock head_title %}</title> -->
+</head>
+<body>
+<!-- {% if messages %}
+    <div class="container">
+        <div class="alert alert-warning">
+            {% for message in messages %}
+                {{ message }}<br/>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %} -->
+{% include 'snippets/header.html' %}
+
+{% block content %}{% endblock %}
+<a class="mobile-btn fixed-bottom btn btn-success" href="tel:+375297779723">Позвонить</a>
+{% include 'snippets/footer.html' %}
+{% include 'snippets/js.html' %}
+</body>
+</html>
+
