@@ -1,0 +1,68 @@
+/* fixed navbar */
+body {
+  /* min-height: 2000px; */
+  padding-top: 70px;
+}
+
+/* sticky footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 540px;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 540px;
+  padding-top: 30px;
+  padding-bottom: 30px; 
+  background-color: #eeeeee;
+  /* color: #ff944d; */
+}
+.footer-card{
+  box-shadow: 0px 5px 25px 0px;
+}
+/* .footer-link {
+    color: #ff944d !important;
+}
+.footer-link:hover{
+    color: #ffffff !important;
+}
+.orange {
+    color: #ff944d;
+} */
+.mobile-btn {
+  visibility: hidden;
+}
+
+@media (max-device-width: 768px){        
+  body {
+      padding-top: 80px;
+      /* Margin bottom by footer height */
+      margin-bottom: 1000px;
+      padding-bottom: 15px;
+      color: #5a5a5a;
+      overflow-x: hidden;
+      }
+      
+  .footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      /* Set the fixed height of the footer here */
+      height: 1000px;
+      padding-top: 30px;
+      padding-bottom: 30px; 
+      background-color: #eeeeee;
+      }
+  .mobile-btn {
+    visibility: visible;
+  }
+}
