@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ block.super }}{{ object.name }}{% endblock head_title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% if object.video_embed %}
+        <div class="col-sm-6">
+            <div class="card text-white">
+                <img src="{{ object.image.url }}" class='img-fluid card-img'>
+                    <div class="card-img-overlay">
+                    <h4 class="card-title text-center bg-dark">{{ object.title }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            {{ object.video_embed|safe }}
+          </div>
+        </div>
+    {% else %}
+        <div class="col">
+            <div class="card text-white">
+                <img src="{{ object.image.url }}" class='img-fluid card-img'>
+                    <div class="card-img-overlay">
+                    <h4 class="card-title text-center bg-dark">{{ object.title }}</h4>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+    <hr/>
+</div>
+<div class="container">
+    <div class="row text-center">
+    <div class="col">
+        <h3 class="text-muted">Даты поездок:</h3>
+    </div>
+    </div>
+    <div class="row">
+        {{ object.dates|safe }}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+        <h3 class="text-muted text-center">Программа поездки:</h3>
+            <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th style="width:7%">День</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ object.tour_program|safe }}
+            </tbody>
+            </table>
+        <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert">
+                <h5>В стоимость тура входит:</h5>
+                    {{ object.included|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-danger" role="alert">
+              <h5>В стоимость тура не входит:</h5>
+                {{ object.not_included|safe }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-info" role="alert">Чтобы забронировать тур, звоните:
+                <strong>+375-29-369-45-89, +375-29-777-97-23, +375 (25) 901-67-06</strong><br/>
+                {{ object.info|safe }}<br/>
+                <strong>Гостиницы на сайте указаны для ознакомления. Отели могут меняться в зависимости от загруженности номерного фонда города. Всю информацию узнавайте у менеджеров по телефону.<br/>
+                Время указано ориентировочно. Руководители групп имеют право менять время и порядок проведения экскурсий в зависимости от сложившихся обстоятельств.<br/>
+                Компания не несет ответственности за изменение сроков поездки, вызванное задержкой при прохождении пограничного контроля.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,7 +5,7 @@ from .models import Join
 class JoinForm(forms.ModelForm):
     name = forms.CharField(label='',
             widget=forms.TextInput(
-                attrs={'placeholder': 'Ваше Имя', 'class': 'form-control'}
+                attrs={'placeholder': 'Ваше Имя', 'class': 'form-control', 'type': 'text'}
                 ))
     telephone = forms.CharField(label='',
             widget=forms.TextInput(
