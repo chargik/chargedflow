@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-from . import database_settings, email_settings
+from . import database_settings, email_settings, amocrm_settings
 import os
+
+
+from amocrm import amo_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,6 +35,11 @@ EMAIL_HOST_USER = email_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
 EMAIL_PORT = email_settings.EMAIL_PORT
 EMAIL_USE_TLS = email_settings.EMAIL_USE_TLS
+
+try:
+    amo_settings.set(amocrm_settings.USER_EMAIL, amocrm_settings.USER_HASH, amocrm_settings.USER_DOMAIN)
+except:
+    print("No amocrm")
 
 
 ADMINS = [('Eugene', EMAIL_HOST_USER)]

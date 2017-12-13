@@ -1,0 +1,21 @@
+<div class="col-sm-6">
+  <div class="card">
+    <h3 class="text-center">Заказать тур</h3>
+    <form method="POST"> {% csrf_token %}
+      {% for field in form %}
+      <div class="input-group">
+          {{ field }}
+      </div>
+      {% endfor %}
+      <!-- 
+      <p class="card-text">{{ form.as_p }}</p>
+      <div class="form-group">
+      <input type="text" class="form-control" id="name" placeholder="Введите ваше имя">
+      </div>
+      <div class="form-group">
+      <input type="tel" class="form-control" id="telephone" placeholder="Введите ваш телефон">
+      </div> -->
+      <button type="submit" class="btn btn-lg btn-success btn-block">Отправить</button>
+    </form>
+  </div>
+</div>

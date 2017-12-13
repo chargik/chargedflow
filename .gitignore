@@ -1,5 +1,6 @@
 database_settings.py
 email_settings.py
+amocrm_settings.py
 local.py
 
 # Byte-compiled / optimized / DLL files
