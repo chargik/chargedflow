@@ -1,5 +1,5 @@
-from django.core.mail import send_mail
 from django.conf import settings
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 # from django.urls import reverse
@@ -8,6 +8,8 @@ from django.views.generic import View, FormView, ListView, DetailView, CreateVie
 # Create your views here.
 from leads.forms import JoinForm
 from .models import Tours
+
+from amocrm import BaseContact, fields
 
 # class HomeView(View):
 #     def get(self, request, *args, **kwargs):
@@ -32,10 +34,12 @@ class TourDetailView(DetailView, FormView):#, CreateView):
     # success_url = '/thank-you-page'
 
     def form_valid(self, form):
-        email = form.cleaned_data.get("email")
+        name = form.cleaned_data.get("name")
         telephone = form.cleaned_data.get("telephone")
         instance = form.save(commit=False)
         instance.save()
+        new_contact = BaseContact(name=name, phone=telephone)
+        new_contact.save()
         subject = 'Заявка с сайта'
         message = '''Заявка со страницы {0} \n\n
         Имя: {1}\n\n
@@ -43,10 +47,9 @@ class TourDetailView(DetailView, FormView):#, CreateView):
         from_email = settings.EMAIL_HOST_USER
         to_email = ['unklerufus@gmail.com']
         send_mail(subject, message, from_email, to_email, fail_silently=True)
+        # add amocrm
         # return super(TourDetailView, self).form_valid(form)
         return HttpResponseRedirect(self.request.path_info)
-        # return HttpResponseRedirect("")
-
 
     # def get_success_url(self):
     #     return reverse('tour-detail', kwargs={'slug': self.slug})

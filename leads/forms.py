@@ -22,7 +22,7 @@ class JoinForm(forms.ModelForm):
     
     def clean_name(self, *args, **kwargs):
         name = self.cleaned_data.get('name')
-        pattern = '[а-яА-я ]{1,20}'
+        pattern = '[а-яА-Я ]{1,20}'
         if re.search(pattern, name):
             return name
         else:

@@ -4,6 +4,20 @@
 {% block content %}
 
 <div class="container">
+  <div class="jumbotron">
+    <h1>Открой мир путешествий вместе с Travel Lab</h1>      
+    <p>Не знаешь с чего начать?</p>
+  </div>   
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Автобусные туры</h1>
+            <hr>
+        </div>
+    </div>
     <div class="row">
         {% for obj in object_list %}
             {% if not obj.draft %}    
@@ -15,7 +29,7 @@
                     <h3 class="card-title"><a href='{{ obj.slug }}'>{{ obj.name }}</a></h3>
                     <p class="card-text">{{ obj.short_title }}</p>
                     <p class="text-muted">Обновлено: {{ obj.updated }}</p>
-                        <a href="{{ obj.slug }}" class="btn btn-success" role="button">Подробнее</a>
+                        <a href="{{ obj.slug }}" class="btn btn-primaty btn-lg" role="button">Подробнее</a>
                     </div>
                 </div>
             </div>
