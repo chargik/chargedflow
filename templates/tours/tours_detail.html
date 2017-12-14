@@ -33,6 +33,7 @@
     <hr/>
 </div>
 <div class="container">
+    {% if object.dates %}
     <div class="row text-center">
         <div class="col">
             <h3 class="text-muted">Даты поездок:</h3>
@@ -45,7 +46,9 @@
             </tbody>
         </table>
     </div>
+    {% endif %}
     <hr>
+    {% if object.tour_program %}
     <div class="row">
         <div class="col">
         <h3 class="text-muted text-center">Программа поездки:</h3>
@@ -63,6 +66,8 @@
         <hr/>
         </div>
     </div>
+    {% endif %}
+    {% if object.included %}
     <div class="row">
         <div class="col">
             <div class="alert alert-success" role="alert">
@@ -71,6 +76,8 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    {% if object.not_included %}
     <div class="row">
         <div class="col">
             <div class="alert alert-danger" role="alert">
@@ -78,7 +85,9 @@
                 <p>{{ object.not_included|safe }}</p>
             </div>
         </div>
-    </div>    
+    </div>
+    {% endif %}
+    {% if object.info %}
     <div class="row">
         <div class="col">
             <div class="alert alert-info" role="alert">
@@ -86,6 +95,7 @@
             </div>
         </div>
     </div>
-        {% include 'snippets/join_form.html' with form=form %}
+    {% endif %}
+    {% include 'snippets/join_form.html' with form=form %}
 </div>
 {% endblock %}
