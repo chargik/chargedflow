@@ -3,6 +3,6 @@ from .models import Join
 # Register your models here.
 
 class JoinAdmin(admin.ModelAdmin):
-    list_display = ('name', 'timestamp')
+    list_display = ('lead_name', 'timestamp')
 
 admin.site.register(Join, JoinAdmin)

@@ -1,8 +1,8 @@
-<div class="row justify-content-sm-center">
+<div class="row justify-content-sm-center" style="padding-bottom: 5px">
   <div class="col-sm-6">
     <div class="card">
       <h3 class="text-center">Заказать тур</h3>
-      <form method="POST"> {% csrf_token %}
+      <form class="join-form" method="POST"> {% csrf_token %}
       {{ form.non_field_errors }}
           {% for field in form %}
             <div class="container">
@@ -16,8 +16,19 @@
               </div>
             </div>
           {% endfor %}
-        <button type="submit" class="btn btn-lg btn-success btn-block">Отправить</button>
+            <button type="submit" class="btn btn-lg btn-success btn-block">Отправить</button>
       </form>
     </div>
   </div>
+  {% if messages %}
+  <div class="col-sm-6">
+    <div class="alert alert-warning">
+    <div class="container">
+      {% for message in messages %}
+        {{ message }}<br>
+      {% endfor %}
+    </div>    
+    </div>
+  </div>
+  {% endif %}
 </div>

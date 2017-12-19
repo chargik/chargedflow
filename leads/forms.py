@@ -3,9 +3,9 @@ import re
 from .models import Join
 
 class JoinForm(forms.ModelForm):
-    name = forms.CharField(label='', required=True, 
+    lead_name = forms.CharField(label='', required=True, 
             widget=forms.TextInput(
-                attrs={'placeholder': 'Ваше Имя', 'class': 'form-control', 'id': 'name'}
+                attrs={'placeholder': 'Ваше Имя', 'class': 'form-control', 'id': 'lead_name'}
                 ))
     telephone = forms.CharField(label='', required=True,
             widget=forms.TextInput(
@@ -13,18 +13,18 @@ class JoinForm(forms.ModelForm):
                 ))
     class Meta:
         model = Join
-        fields = ['name', 'telephone']  
+        fields = ['lead_name', 'telephone']  
 
     # def cleaned_data(self, *args, **kwargs):
     #     name = self.cleaned_data.get("name")
     #     telephone = self.cleaned_data.get("telephone")
     #     return name, telephone
     
-    def clean_name(self, *args, **kwargs):
-        name = self.cleaned_data.get('name')
+    def clean_lead_name(self, *args, **kwargs):
+        lead_name = self.cleaned_data.get('lead_name')
         pattern = '[а-яА-Я ]{1,20}'
-        if re.search(pattern, name):
-            return name
+        if re.search(pattern, lead_name):
+            return lead_name
         else:
             raise forms.ValidationError("Введите правильное имя")
 
@@ -35,4 +35,4 @@ class JoinForm(forms.ModelForm):
         if re.search(pattern, telephone):
             return telephone
         else:
-            raise forms.ValidationError("Введите парвильный телефон")
+            raise forms.ValidationError("Введите правильный телефон")

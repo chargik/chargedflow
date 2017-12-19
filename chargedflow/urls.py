@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
+from leads.api.views import JoinCreateAPIView
 from pages.views import HomeView, TourDetailView
 
 
@@ -29,4 +30,5 @@ urlpatterns = [
     path('thank-you-page/', TemplateView.as_view(template_name='thank-you-page.html'), name='thank-you-page'),
     path('<slug>/', TourDetailView.as_view(), name='tours-detail'),
     path('', HomeView.as_view(), name='home'),
+    path('api/form/join', JoinCreateAPIView.as_view(), name='form-join'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

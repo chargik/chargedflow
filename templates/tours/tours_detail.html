@@ -1,56 +1,53 @@
 {% extends 'base.html' %}
 
-{% block head_title %}{{ block.super }}{{ object.name }}{% endblock head_title %}
+{% block head_title %}{{ block.super }}{{ object.tour_name }}{% endblock head_title %}
 
 {% block content %}
 <div class="container">
+    {% if object.title %}
     <div class="row">
-    {% if object.video_embed %}
-        <div class="col-sm-6">
+        <div class="col">
             <div class="card text-white">
                 <img src="{{ object.image.url }}" class='img-fluid card-img'>
-                    <div class="card-img-overlay">
+                <div class="card-img-overlay">
                     <p class="card-title text-center bg-dark">{{ object.title }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    {% endif %}
+    {% if object.video_embed %}
+    <div class="row">
+        <div class="col">
           <div class="embed-responsive embed-responsive-16by9">
             {{ object.video_embed|safe }}
           </div>
         </div>
-    {% else %}
-        <div class="col">
-            <div class="card text-white">
-                <img src="{{ object.image.url }}" class='img-fluid card-img'>
-                    <div class="card-img-overlay">
-                    <p class="card-title text-center bg-dark">{{ object.title }}</p>
-                </div>
-            </div>
-        </div>
-    {% endif %}
     </div>
-    <hr/>
+    {% endif %}
 </div>
 <div class="container">
     {% if object.dates %}
     <div class="row text-center">
         <div class="col">
+            <hr>
             <h3 class="text-muted">Даты поездок:</h3>
         </div>
     </div>
     <div class="row">
-        <table class="table table-bordered">
-            <tbody>
-                {{ object.dates|safe }}
-            </tbody>
-        </table>
+        <div class="col">
+            <table class="table table-bordered">
+                <tbody>
+                    {{ object.dates|safe }}
+                </tbody>
+            </table>
+        </div>
     </div>
     {% endif %}
-    <hr>
     {% if object.tour_program %}
     <div class="row">
         <div class="col">
+        <hr>
         <h3 class="text-muted text-center">Программа поездки:</h3>
             <table class="table table-hover table-bordered">
             <thead>
@@ -63,7 +60,6 @@
                 {{ object.tour_program|safe }}
             </tbody>
             </table>
-        <hr/>
         </div>
     </div>
     {% endif %}
@@ -98,4 +94,6 @@
     {% endif %}
     {% include 'snippets/join_form.html' with form=form %}
 </div>
+
+
 {% endblock %}

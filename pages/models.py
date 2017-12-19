@@ -13,7 +13,7 @@ CATEGORY_CHOICE = (
 class Tours(models.Model):
     head_keywords = models.TextField(null=True, blank=True)
     head_description = models.TextField(null=True, blank=True)
-    name = models.CharField(max_length=120) # tour name
+    tour_name = models.CharField(max_length=120) # tour name
     image = models.ImageField(null=True, blank=True)# main image
     short_title = models.TextField(null=True, blank=True)
     title = models.TextField(null=True, blank=True) # main image title
@@ -32,10 +32,10 @@ class Tours(models.Model):
     price = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.name
+        return self.tour_name
 
-    # def get_absolute_url(self):
-    #     return reverse('tour-detail', kwargs={'slug': self.slug})
+    def save(self, *args, **kwargs):
+        super(Tours, self).save(*args, **kwargs) 
 
     class Meta:
         verbose_name_plural = 'tours'

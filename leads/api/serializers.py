@@ -7,13 +7,13 @@ from leads.models import Join
 class JoinSerializer(serializers.ModelSerializer):
     class Meta:
         model = Join
-        fields = ['name', 'telephone']
+        fields = ['lead_name', 'telephone']
 
-    def validate_name(self, value):
-        name = value
+    def validate_lead_name(self, value):
+        lead_name = value
         pattern = '[а-яА-Я ]{1,20}'
-        if re.search(pattern, name):
-            return name
+        if re.search(pattern, lead_name):
+            return lead_name
         else:
             raise serializers.ValidationError("Введите правильное имя")
 
@@ -24,4 +24,4 @@ class JoinSerializer(serializers.ModelSerializer):
         if re.search(pattern, telephone):
             return telephone
         else:
-            raise serializers.ValidationError("Введите парвильный телефон")
+            raise serializers.ValidationError("Введите правильный телефон")
