@@ -19,10 +19,11 @@ class HomeView(ListView):
     form_class = JoinForm
     success_url = '/thank-you-page'
 
-    # def get_queryset(self):
-    #     slug = self.kwargs.get("slug")
-    #     queryset = Tours.objects.filter(draft=False)
-    #     return queryset
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        queryset = Tours.objects.filter(draft=False)
+        return queryset
+
 
 class BusTour(ListView):
     template_name = 'bus_tour.html'
