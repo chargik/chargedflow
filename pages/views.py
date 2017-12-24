@@ -14,19 +14,23 @@ from amocrm import BaseContact, fields
 #     def get(self, request, *args, **kwargs):
 #         return render(request, "pages/home.html", {})
 
-class HomeView(ListView):
-    template_name = 'home.html'
-    form_class = JoinForm
-    success_url = '/thank-you-page'
+# class HomeView(ListView):
+#     template_name = 'home.html'
+#     form_class = JoinForm
+#     success_url = '/thank-you-page'
 
-    def get_queryset(self):
-        slug = self.kwargs.get("slug")
-        queryset = Tours.objects.filter(draft=False)
-        return queryset
+#     def get_queryset(self):
+#         slug = self.kwargs.get("slug")
+#         queryset = Tours.objects.filter(draft=False)
+#         return queryset
 
 
 class BusTour(ListView):
     template_name = 'bus_tour.html'
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        queryset = Tours.objects.filter(category='bus')
+        return queryset
         
 class AviaTour(ListView):
     template_name = 'avia_tour.html'

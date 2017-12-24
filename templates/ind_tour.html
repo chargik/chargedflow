@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block head_title %}{{ block.super }} | Главная{%endblock head_title %}
+{% block head_title %}{{ block.super }} | Авиа Туры{%endblock head_title %}
 {% block content %}
 
 <div class="container">
@@ -13,33 +13,6 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h1><a href="{% url 'bus-tour-list' %}">Автобусные туры</a></h1>
-            <hr>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col">
-            <h1><a href="{% url 'avia-tour-list' %}">Авиатуры</a></h1>
-            <hr>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col">
-            <h1><a href="{% url 'corp-tour-list' %}">Корпаративные туры</a></h1>
-            <hr>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col">
-            <h1><a href="{% url 'ind-tour-list' %}">Индивидуальные туры</a></h1>
-            <hr>
-        </div>
-    </div>
-<!--     <div class="row">
         {% for obj in object_list %}
         <p>{{ obj.category }}</p>
             <div class="col-sm-6 col-md-4">
@@ -54,7 +27,7 @@
                 </div>
             </div>
         {% endfor %}
-    </div> -->
+    </div>
 <hr/>
 </div>
 
