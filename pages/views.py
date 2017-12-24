@@ -29,17 +29,29 @@ class BusTour(ListView):
     template_name = 'bus_tour.html'
     def get_queryset(self):
         slug = self.kwargs.get("slug")
-        queryset = Tours.objects.filter(category='bus')
+        queryset = Tours.objects.filter(category='bus').filter(draft=False)
         return queryset
         
 class AviaTour(ListView):
     template_name = 'avia_tour.html'
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        queryset = Tours.objects.filter(category='avia').filter(draft=False)
+        return queryset
 
 class CorpTour(ListView):
     template_name = 'corp_tour.html'
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        queryset = Tours.objects.filter(category='corp').filter(draft=False)
+        return queryset
 
 class IndTour(ListView):
-    template_name = 'ind_tour.html'        
+    template_name = 'ind_tour.html'
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")
+        queryset = Tours.objects.filter(category='ind').filter(draft=False)
+        return queryset       
 
 
 class TourDetailView(DetailView, SuccessMessageMixin, CreateView):

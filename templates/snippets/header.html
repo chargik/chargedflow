@@ -17,6 +17,17 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Туры
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'bus-tour-list' %}">Автобусные туры</a>
+                <a class="dropdown-item" href="{% url 'avia-tour-list' %}">Авиатуры</a>
+                <a class="dropdown-item" href="{% url 'corp-tour-list' %}">Корпоративные туры</a>
+                <a class="dropdown-item" href="{% url 'ind-tour-list' %}">Индивидуальные туры</a>
+              </div>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -28,12 +39,6 @@
             <li class="nav-item">
               <a class="nav-link" href="tel:+375259016706">+375-25-901-67-06</a>
             </li>
-          </ul>
-<!--           <ul class="nav navbar-nav navbar-right">
-            <li><a class="text-muted" href="tel:+375293694589">+375-29-369-45-89</a></li>
-            <li><a class="text-muted" href="tel:+375297779723">+375-29-777-97-23</a></li>
-            <li><a class="text-muted" href="tel:+375259016706">+375-25-901-67-06</a></li>
-          </ul> -->
         </div>
       </div>
     </nav>

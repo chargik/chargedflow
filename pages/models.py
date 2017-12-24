@@ -6,8 +6,8 @@ from django.db import models
 CATEGORY_CHOICE = (
     ("bus", "Bus"),
     ("avia", "Avia"),
-    ("individual", "Individual"),
-    ("corporate", "Corporate")
+    ("ind", "Individual"),
+    ("corp", "Corporate")
     )
 # Create your models here.
 class Tours(models.Model):
