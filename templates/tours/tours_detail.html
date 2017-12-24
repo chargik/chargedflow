@@ -6,7 +6,7 @@
 <div class="container">
     {% if object.title %}
     <div class="row">
-        <div class="col">
+        <div class="col-sm-6">
             <div class="card text-white">
                 <img src="{{ object.image.url }}" class='img-fluid card-img'>
                 <div class="card-img-overlay">
@@ -18,7 +18,7 @@
     {% endif %}
     {% if object.video_embed %}
     <div class="row">
-        <div class="col">
+        <div class="col-sm-6">
           <div class="embed-responsive embed-responsive-16by9">
             {{ object.video_embed|safe }}
           </div>

@@ -1,11 +1,14 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+import re
+
 from .models import Join
 
+# BLACK_PHONE_LIST = ['5403311', '7502020']
 
 def validate_lead_name(value):
-    lead_name_validator = RegexValidator(regex='[а-яА-Я ]', message='Введите имя на русском')
+    lead_name_validator = RegexValidator(regex='[а-яА-Я ]')
     try:
         lead_name_validator(value)
     except:
@@ -13,7 +16,9 @@ def validate_lead_name(value):
     return value
 
 def validate_telephone(value):
-    lead_name_validator = RegexValidator(regex='((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}', message='Введите правильный телефон')
+    clean_lead_phone = re.compile('[^0-9]')
+    lead_name_validator = RegexValidator(regex='((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}')
+    if 
     try:
         lead_name_validator(value)
     except:
@@ -39,19 +44,19 @@ class JoinForm(forms.ModelForm):
     #     telephone = self.cleaned_data.get("telephone")
     #     return name, telephone
     
-    def clean_lead_name(self, *args, **kwargs):
-        lead_name = self.cleaned_data.get('lead_name')
-        pattern = '[а-яА-Я ]{1,20}'
-        if re.search(pattern, lead_name):
-            return lead_name
-        else:
-            raise forms.ValidationError("Введите правильное имя")
+    # def clean_lead_name(self, *args, **kwargs):
+    #     lead_name = self.cleaned_data.get('lead_name')
+    #     pattern = '[а-яА-Я ]{1,20}'
+    #     if re.search(pattern, lead_name):
+    #         return lead_name
+    #     else:
+    #         raise forms.ValidationError("Введите правильное имя")
 
-    def clean_telephone(self, *args, **kwargs):
-        telephone = self.cleaned_data.get('telephone')
-        # ^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
-        pattern = '((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}'
-        if re.search(pattern, telephone):
-            return telephone
-        else:
-            raise forms.ValidationError("Введите правильный телефон")
+    # def clean_telephone(self, *args, **kwargs):
+    #     telephone = self.cleaned_data.get('telephone')
+    #     # ^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
+    #     pattern = '((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}'
+    #     if re.search(pattern, telephone):
+    #         return telephone
+    #     else:
+    #         raise forms.ValidationError("Введите правильный телефон")

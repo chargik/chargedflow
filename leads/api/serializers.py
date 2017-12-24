@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+import re
 
 from leads.models import Join
 
@@ -11,8 +11,8 @@ class JoinSerializer(serializers.ModelSerializer):
 
     def validate_lead_name(self, value):
         lead_name = value
-        pattern = '[а-яА-Я ]{1,20}'
-        if re.search(pattern, lead_name):
+        pattern_name = '[а-яА-Я ]'
+        if re.search(pattern_name, lead_name):
             return lead_name
         else:
             raise serializers.ValidationError("Введите правильное имя")
@@ -20,8 +20,12 @@ class JoinSerializer(serializers.ModelSerializer):
 
     def validate_telephone(self, value):
         telephone = value
-        pattern = '((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}'
-        if re.search(pattern, telephone):
+        pattern_telephone = '((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}'
+        if re.search(pattern_telephone, telephone):
             return telephone
         else:
             raise serializers.ValidationError("Введите правильный телефон")
+
+    # def validate(self, value):
+    #     lead_name = value['lead_name']
+    #     telephone = value['telephone']

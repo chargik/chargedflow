@@ -57,13 +57,14 @@ class IndTour(ListView):
 class TourDetailView(DetailView, SuccessMessageMixin, CreateView):
     template_name = 'tours/tours_detail.html'
     queryset = Tours.objects.all()
-    model = Tours
+    # model = Tours
     form_class = JoinForm
     # success_url = '/thank-you-page'
 
     # def get_context_data(self, *args, **kwargs):
     #     context = super(TourDetailView, self).get_context_data(*args, **kwargs)
-    #     context['object'] = Tours.objects.all()
+    #     context['tour_obj'] = Tours.objects.all()
+    #     print(context['tour_obj'])
     #     return context
 
     def get_success_message(self, cleaned_data):
