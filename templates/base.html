@@ -16,45 +16,40 @@
 
 {% include 'snippets/header.html' %}
 
-{% block content %}{% endblock %}
-<a class="mobile-btn fixed-bottom btn btn-success" href="tel:+375297779723"><i class="fa fa-phone fa-rotate-90" aria-hidden="true"></i> Позвонить</a>
+{% block content %}
+{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+           <a class="mobile-btn fixed-bottom btn btn-success" href="tel:+375297779723"><i class="fa fa-phone fa-rotate-90" aria-hidden="true"></i> Позвонить</a> 
+        </div>
+    </div>
+</div>
 {% include 'snippets/footer.html' %}
 {% include 'snippets/js.html' %}
-<!-- <script>
-    ${document}.ready(function(){
-        {% block jquery %}{% endblock %}
-    })
-</script> -->
-<!--     <script>
-        $(document).ready(function(){
-            var $marketingModal = $("#signUpModal");
-
-            $("body").mouseleave(function(){
-                $marketingModal.modal()
-            })
-
+<script>
+    $(document).ready(function() {
         $(".join-form").submit(function(e){
-            e.preventDefault()
-            console.log($(this).serialize())
-            var joinFormAPIEndpoint = "{% url 'form-join' %}";
-            $.ajax({
-                method: "POST",
-                data: $(this).serialize(),
-                url: joinFormAPIEndpoint,
-                success: function(data){
-                    console.log(data)
-                    $(".join-form").parent().html("<p class=lead>Спасибо за заявку! Наш менеджер свяжется с Вами</p>")
-                },
-                error: function(data){
-                    console.log("error")
-                    console.log(data)
-                    $(".join-form-error").text(data.responseJSON)
-                }
-            })
+        e.preventDefault()
+        console.log($(this).serialize())
+        var joinFormAPIEndpont = "{% url 'form-join' %}"
+        $.ajax({
+            method: "POST",
+            data: $(this).serialize(),
+            url: joinFormAPIEndpont,
+            success: function(data){
+                console.log(data)
+                $("join-form").parent().html("<p class='lead'>Спасибо за заявку, наш менеджер свяжется с Вами!</p>")
+            },
+            error: function(data){
+                console.log("error")
+                console.log(data)
+                $("join-form-error").text(data.responseText)
+            }
         })
-
-        })
-    </script> -->
+    })
+    })
+</script>
     {% include 'snippets/modal.html' %}
 </body>
 </html>

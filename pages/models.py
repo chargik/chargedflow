@@ -1,5 +1,5 @@
 from django.db import models
-# from django.urls import reverse
+from django.urls import reverse
 # from django.db.models.signals import pre_save, post_save
 
 
@@ -35,7 +35,10 @@ class Tours(models.Model):
         return self.tour_name
 
     def save(self, *args, **kwargs):
-        super(Tours, self).save(*args, **kwargs) 
+        super(Tours, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('tour-detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name_plural = 'tours'

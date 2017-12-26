@@ -3,6 +3,11 @@
     <div class="card">
       <h3 class="text-center">Заказать тур</h3>
       <form class="join-form" method="POST"> {% csrf_token %}
+      <div class="alert alert-danger alert-dismissible join-form-alert" style="display: none;">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <span class="join-form-error"></span>
+        </div>
       {% if form.non_field_errors %}
         <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>

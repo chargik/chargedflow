@@ -4,27 +4,27 @@
 
 {% block content %}
 <div class="container">
+<div class="row justify-content-sm-center">
     {% if object.title %}
-    <div class="row">
         <div class="col-sm-6">
             <div class="card text-white">
                 <img src="{{ object.image.url }}" class='img-fluid card-img'>
                 <div class="card-img-overlay">
-                    <p class="card-title text-center bg-dark">{{ object.title }}</p>
+                    <p class="card-title text-center" style="background: rgba(52, 58, 64, 0.7);">
+                        {{ object.title }}
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
     {% endif %}
     {% if object.video_embed %}
-    <div class="row">
         <div class="col-sm-6">
           <div class="embed-responsive embed-responsive-16by9">
             {{ object.video_embed|safe }}
           </div>
         </div>
-    </div>
     {% endif %}
+    </div>
 </div>
 <div class="container">
     {% if object.dates %}
@@ -34,7 +34,7 @@
             <h3 class="text-muted">Даты поездок:</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row text-center">
         <div class="col">
             <table class="table table-bordered">
                 <tbody>
@@ -44,6 +44,8 @@
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container">
     {% if object.tour_program %}
     <div class="row">
         <div class="col">
@@ -63,6 +65,8 @@
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container">
     {% if object.included %}
     <div class="row">
         <div class="col">
@@ -73,6 +77,8 @@
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container">
     {% if object.not_included %}
     <div class="row">
         <div class="col">
@@ -83,6 +89,8 @@
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container">
     {% if object.info %}
     <div class="row">
         <div class="col">
@@ -92,8 +100,9 @@
         </div>
     </div>
     {% endif %}
+</div>
+<div class="container">
     {% include 'snippets/join_form.html' with form=form %}
 </div>
-
 
 {% endblock %}

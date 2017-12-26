@@ -30,12 +30,11 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('thank-you-page/', TemplateView.as_view(template_name='thank-you-page.html'), name='thank-you-page'),
     path('bus-tour-list/', BusTour.as_view(), name='bus-tour-list'),
-    path('avia-tour-list/', BusTour.as_view(), name='avia-tour-list'),
     path('avia-tour-list/', AviaTour.as_view(), name='avia-tour-list'),
     path('corp-tour-list/', CorpTour.as_view(), name='corp-tour-list'),
     path('ind-tour-list/', IndTour.as_view(), name='ind-tour-list'),
+    path('api/form/join/', JoinCreateAPIView.as_view(), name='form-join'),
     re_path(r'(?P<slug>[\w-]+)/$', TourDetailView.as_view(), name='tours-detail'),
-    path('api/form/join', JoinCreateAPIView.as_view(), name='form-join'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

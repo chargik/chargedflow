@@ -9,8 +9,39 @@
     <p>Не знаешь с чего начать?</p>
   </div>   
 </div>
-
-
+<div class="container">
+    <div class="row">
+    <div class="col">
+    <div class="card-group">
+            <div class="card text-center">
+              <div class="card-block">
+                <h4 class="card-title">Приятные цены <i class="fa fa-money" aria-hidden="true"></i></h4>
+                <p class="card-text">Мы собрали только самые лучшие предложения от туроператоров по всем авианаправлениям. А во всех наших автобусных турах - мы сами являемся туроперато-рами и вы получаете тур напрямую по самой лучшей цене!</p>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-block"> 
+                <h4 class="card-title">С Нами надежно <i class="fa fa-handshake-o" aria-hidden="true"></i></h4>
+                <p class="card-text">Мы выбираем только самые надежные направления и самые безопасные туры. Бронируя тур у нас, вы получаете гарантию, что вас тур состоится и вы будете застрахованы от неприятных сюрпризов!</p>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-block">
+                <h4 class="card-title">С Нами удобно <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></h4>
+                <p class="card-text">Офис нашей компании расположен в центре Минска. Туристы из других городов могут забронировать тур дистанционно: по телефону или почте. Мы вышлем все необходимые документы для бронирования тура.</p>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-block">
+                <h4 class="card-title"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Оригинально <i class="fa fa-hand-o-left" aria-hidden="true"></i></h4>
+                <p class="card-text">Самые интересные и не банальные, но в то же время информативные экскурсии - это то к чему мы стремимся в нашей работе. Теплые воспоминания и яркие впечатления гарантируем!</p>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <hr>
+</div>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -18,21 +49,18 @@
             <hr>
         </div>
     </div>
-    <hr/>
     <div class="row">
         <div class="col">
             <h1><a href="{% url 'avia-tour-list' %}">Авиатуры</a></h1>
             <hr>
         </div>
     </div>
-    <hr/>
     <div class="row">
         <div class="col">
             <h1><a href="{% url 'corp-tour-list' %}">Корпаративные туры</a></h1>
             <hr>
         </div>
     </div>
-    <hr/>
     <div class="row">
         <div class="col">
             <h1><a href="{% url 'ind-tour-list' %}">Индивидуальные туры</a></h1>
@@ -55,7 +83,6 @@
             </div>
         {% endfor %}
     </div> -->
-<hr/>
 </div>
 
 {% endblock content %}

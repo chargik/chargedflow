@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 import re
@@ -18,7 +19,6 @@ def validate_lead_name(value):
 def validate_telephone(value):
     clean_lead_phone = re.compile('[^0-9]')
     lead_name_validator = RegexValidator(regex='((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}')
-    if 
     try:
         lead_name_validator(value)
     except:
@@ -37,26 +37,21 @@ class JoinForm(forms.ModelForm):
                 ))
     class Meta:
         model = Join
-        fields = ['lead_name', 'telephone']  
+        fields = ['lead_name', 'telephone']
 
-    # def cleaned_data(self, *args, **kwargs):
-    #     name = self.cleaned_data.get("name")
-    #     telephone = self.cleaned_data.get("telephone")
-    #     return name, telephone
-    
-    # def clean_lead_name(self, *args, **kwargs):
-    #     lead_name = self.cleaned_data.get('lead_name')
-    #     pattern = '[а-яА-Я ]{1,20}'
-    #     if re.search(pattern, lead_name):
-    #         return lead_name
-    #     else:
-    #         raise forms.ValidationError("Введите правильное имя")
-
-    # def clean_telephone(self, *args, **kwargs):
-    #     telephone = self.cleaned_data.get('telephone')
-    #     # ^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
-    #     pattern = '((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}'
-    #     if re.search(pattern, telephone):
-    #         return telephone
-    #     else:
-    #         raise forms.ValidationError("Введите правильный телефон")
+    def form_valid(self, form):
+        lead_name = form.cleaned_data.get("lead_name")
+        telephone = form.cleaned_data.get("telephone")
+        # instance = form.save(commit=False)
+        # instance.save()
+        # new_contact = BaseContact(lead_name=lead_name, phone=telephone)
+        # new_contact.save()
+        subject = 'Заявка с сайта'
+        message = '''Заявка со страницы {0} \n\n
+        Имя: {1}\n\n
+        Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
+        from_email = settings.EMAIL_HOST_USER
+        to_email = ['unklerufus@gmail.com']
+        send_mail(subject, message, from_email, to_email, fail_silently=True)
+        # add amocrm
+        return HttpResponseRedirect(self.request.path_info)
