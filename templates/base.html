@@ -39,16 +39,17 @@
             url: joinFormAPIEndpont,
             success: function(data){
                 console.log(data)
-                $("join-form").parent().html("<p class='lead'>Спасибо за заявку, наш менеджер свяжется с Вами!</p>")
+                $(".join-form").parent().html("<p class='lead'>Спасибо за заявку, наш менеджер свяжется с Вами!</p>")
             },
             error: function(data){
-                console.log("error")
-                console.log(data)
-                $("join-form-error").text(data.responseText)
+                console.log("error");
+                console.log(data);
+                $(".join-form-alert").fadeIn();
+                $(".join-form-error").text(data.responseJSON.non_field_errors[0]);
             }
         })
     })
-    })
+    });
 </script>
 {% include 'snippets/modal.html' %}
 </body>
