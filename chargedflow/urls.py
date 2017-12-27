@@ -33,7 +33,7 @@ urlpatterns = [
     path('avia-tour-list/', AviaTour.as_view(), name='avia-tour-list'),
     path('corp-tour-list/', CorpTour.as_view(), name='corp-tour-list'),
     path('ind-tour-list/', IndTour.as_view(), name='ind-tour-list'),
-    path('api/form/join/', JoinCreateAPIView.as_view(), name='form-join'),
+    re_path(r'^api/form/join/$', JoinCreateAPIView.as_view(), name='form-join'),
     re_path(r'(?P<slug>[\w-]+)/$', TourDetailView.as_view(), name='tours-detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

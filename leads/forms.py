@@ -9,7 +9,7 @@ from .models import Join
 # BLACK_PHONE_LIST = ['5403311', '7502020']
 
 def validate_lead_name(value):
-    lead_name_validator = RegexValidator(regex='[а-яА-Я ]')
+    lead_name_validator = RegexValidator(regex='^[а-яА-ЯёЁ ]+$')
     try:
         lead_name_validator(value)
     except:
@@ -38,20 +38,3 @@ class JoinForm(forms.ModelForm):
     class Meta:
         model = Join
         fields = ['lead_name', 'telephone']
-
-    def form_valid(self, form):
-        lead_name = form.cleaned_data.get("lead_name")
-        telephone = form.cleaned_data.get("telephone")
-        # instance = form.save(commit=False)
-        # instance.save()
-        # new_contact = BaseContact(lead_name=lead_name, phone=telephone)
-        # new_contact.save()
-        subject = 'Заявка с сайта'
-        message = '''Заявка со страницы {0} \n\n
-        Имя: {1}\n\n
-        Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
-        from_email = settings.EMAIL_HOST_USER
-        to_email = ['unklerufus@gmail.com']
-        send_mail(subject, message, from_email, to_email, fail_silently=True)
-        # add amocrm
-        return HttpResponseRedirect(self.request.path_info)

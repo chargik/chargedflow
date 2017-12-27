@@ -9,4 +9,3 @@ class JoinCreateAPIView(generics.CreateAPIView):
     serializer_class = JoinSerializer
     permission_classes = []
     authentication_classes = []
-    

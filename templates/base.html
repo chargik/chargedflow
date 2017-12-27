@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta name="description" content="{{ object.head_description }}">
-    <meta name="keywords" content="{{ object.head_keywords }}"> -->
-    <meta name="author" content="chargedflow">
+    <meta name="description" content="{{ object.head_description }}">
+    <meta name="keywords" content="{{ object.head_keywords }}">
+    <meta name="chargedflow" content="">
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/png">
     <!-- Put this script tag to the <head> of your page -->
     {% include 'snippets/css.html' %}
@@ -30,9 +30,9 @@
 <script>
     $(document).ready(function() {
         $(".join-form").submit(function(e){
-        e.preventDefault()
-        console.log($(this).serialize())
-        var joinFormAPIEndpont = "{% url 'form-join' %}"
+        e.preventDefault();
+        console.log($(this).serialize());
+        var joinFormAPIEndpont = "{% url 'form-join' %}";
         $.ajax({
             method: "POST",
             data: $(this).serialize(),
@@ -50,7 +50,7 @@
     })
     })
 </script>
-    {% include 'snippets/modal.html' %}
+{% include 'snippets/modal.html' %}
 </body>
 </html>
 
