@@ -20,14 +20,14 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
 from leads.api.views import JoinCreateAPIView
-from pages.views import TourDetailView, BusTour, AviaTour, CorpTour, IndTour
+from pages.views import TourDetailView, BusTour, AviaTour, CorpTour, IndTour, HomeView, AboutView, ContactView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('', HomeView.as_view(), name='home'),
     path('thank-you-page/', TemplateView.as_view(template_name='thank-you-page.html'), name='thank-you-page'),
     path('bus-tour-list/', BusTour.as_view(), name='bus-tour-list'),
     path('avia-tour-list/', AviaTour.as_view(), name='avia-tour-list'),

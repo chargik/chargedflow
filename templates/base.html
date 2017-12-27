@@ -29,6 +29,13 @@
 {% include 'snippets/js.html' %}
 <script>
     $(document).ready(function() {
+        var $marketingModal = $("#signUpModal");
+        $("body").mouseleave(function(){
+            $marketingModal.modal()
+            })
+
+
+
         $(".join-form").submit(function(e){
         e.preventDefault();
         console.log($(this).serialize());
