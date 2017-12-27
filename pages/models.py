@@ -30,12 +30,10 @@ class Tours(models.Model):
     draft = models.BooleanField(default=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default='bus')
     price = models.CharField(max_length=20)
+    json_ld = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.tour_name
-
-    def save(self, *args, **kwargs):
-        super(Tours, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('tour-detail', kwargs={'slug': self.slug})

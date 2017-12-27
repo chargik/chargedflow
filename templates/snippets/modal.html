@@ -1,11 +1,15 @@
-<div id='signUpModal' class="modal" tabindex="-1" role="dialog">
+<div id='signUpModal' class="modal fade text-center" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center">Остались вопросы?</h5>
+        <h5 class="modal-title">Остались вопросы?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+<!--                 <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="sr-only">На полпути к путешествию</span>На полпути к путешествию</div>
+        </div>
+        </div> -->
       </div>
       <div class="modal-body">
         {% include 'snippets/join_form.html' with form=form %}

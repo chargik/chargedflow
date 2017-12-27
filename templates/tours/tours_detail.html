@@ -111,5 +111,9 @@
   </div>
 </div>
 </div>
-
+{% if object.json_ld %}
+    <script type="application/ld+json">
+        {{ object.json_ld|safe }}
+    </script>
+{% endif %}
 {% endblock %}
