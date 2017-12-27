@@ -30,11 +30,16 @@
 <script>
     $(document).ready(function() {
         var $marketingModal = $("#signUpModal");
+        var didDismissModal = false;
         $("body").mouseleave(function(){
-            $marketingModal.modal()
-            })
+            if (!didDismissModal){
+                $marketingModal.modal()
+            }
+        })
 
-
+        $marketingModal.on("hidden.bs.modal", function(e){
+            didDismissModal = true;
+        })
 
         $(".join-form").submit(function(e){
         e.preventDefault();
@@ -45,12 +50,11 @@
             data: $(this).serialize(),
             url: joinFormAPIEndpont,
             success: function(data){
-                console.log(data)
+                didDismissModal=true;
+                $marketingModal.modal('hide')
                 $(".join-form").parent().html("<p class='lead'>Спасибо за заявку, наш менеджер свяжется с Вами!</p>")
             },
             error: function(data){
-                console.log("error");
-                console.log(data);
                 $(".join-form-alert").fadeIn();
                 $(".join-form-error").text(data.responseJSON.non_field_errors[0]);
             }

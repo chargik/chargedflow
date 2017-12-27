@@ -1,43 +1,25 @@
-<div class="row justify-content-sm-center" style="padding-bottom: 5px">
-  <div class="col-sm-6">
-    <div class="card">
-      <h3 class="text-center my-auto">Оставить заявку:</h3>
-      <form class="join-form" method="POST" action="">{% csrf_token %}
-      <div class="alert alert-danger alert-dismissible join-form-alert" style="display: none;">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span></button>
-        <span class="join-form-error"></span>
+<form class="join-form" method="POST" action="">{% csrf_token %}
+<div class="alert alert-danger alert-dismissible join-form-alert" style="display: none;">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span></button>
+  <span class="join-form-error"></span>
+  </div>
+{% if form.non_field_errors %}
+  <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>{{ form.non_field_errors }}</div>
+{% endif %}
+    {% for field in form %}
+      <div class="container">
+        {% if field.errors %}
+          <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>{{ field.errors }}</div>
+        {% endif %}
+        <div class="input-group" style="padding-bottom: 5px;">
+          {{ field }}
         </div>
-      {% if form.non_field_errors %}
-        <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>{{ form.non_field_errors }}</div>
-      {% endif %}
-          {% for field in form %}
-            <div class="container">
-              {% if field.errors %}
-                <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>{{ field.errors }}</div>
-              {% endif %}
-              <div class="input-group" style="padding-bottom: 5px;">
-                {{ field }}
-              </div>
-            </div>
-          {% endfor %}
-            <button type="submit" class="btn btn-lg btn-success btn-block">Отправить</button>
-      </form>
-    </div>
-  </div>
-  {% if messages %}
-  <div class="col-sm-6">
-    <div class="alert alert-warning">
-    <div class="container">
-      {% for message in messages %}
-        {{ message }}<br>
-      {% endfor %}
-    </div>    
-    </div>
-  </div>
-  {% endif %}
-</div>
+      </div>
+    {% endfor %}
+      <button type="submit" class="btn btn-lg btn-success btn-block">Отправить</button>
+</form>

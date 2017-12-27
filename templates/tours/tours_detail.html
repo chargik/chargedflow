@@ -102,7 +102,14 @@
     {% endif %}
 </div>
 <div class="container">
-    {% include 'snippets/join_form.html' with form=form %}
+<div class="row justify-content-sm-center" style="padding-bottom: 5px">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3 class="text-center my-auto">Оставить заявку:</h3>
+      {% include 'snippets/join_form.html' with form=form %}
+    </div>
+  </div>
+</div>
 </div>
 
 {% endblock %}
