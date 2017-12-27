@@ -30,6 +30,7 @@ class Tours(models.Model):
     draft = models.BooleanField(default=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICE, default='bus')
     price = models.CharField(max_length=20)
+    leave_capture = models.BooleanField(default=True)
     json_ld = models.TextField(null=True, blank=True)
 
     def __str__(self):

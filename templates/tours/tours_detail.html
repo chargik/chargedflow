@@ -111,6 +111,9 @@
   </div>
 </div>
 </div>
+{% if object.leave_capture %}
+<span class="leave-capture" show="true"></span>
+{% endif %}
 {% if object.json_ld %}
     <script type="application/ld+json">
         {{ object.json_ld|safe }}

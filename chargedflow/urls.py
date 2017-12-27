@@ -36,6 +36,3 @@ urlpatterns = [
     re_path(r'^api/form/join/$', JoinCreateAPIView.as_view(), name='form-join'),
     re_path(r'(?P<slug>[\w-]+)/$', TourDetailView.as_view(), name='tours-detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-# r'^(?P<slug>[\w-]+)/$'
