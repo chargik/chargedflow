@@ -56,7 +56,7 @@
             success: function(data){
                 didDismissModal=true;
                 $marketingModal.modal('hide')
-                this_.parent().html("<p class='lead'>Спасибо за заявку, наш менеджер свяжется с Вами!</p>")
+                this_.parent().html("<div class='text-center alert alert-success'>Спасибо за заявку, наш менеджер свяжется с Вами!</div>")
             },
             error: function(data){
                 this_.find(".join-form-alert").fadeIn();

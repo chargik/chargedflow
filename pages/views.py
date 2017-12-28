@@ -44,18 +44,18 @@ class TourDetailView(DetailView, SuccessMessageMixin, CreateView):
     def get_success_message(self, cleaned_data):
         return "Спасибо за заявку, наш менеджер свяжется с Вами!"
 
-    # def get_success_url(self, *args, **kwargs):
-        # return HttpResponseRedirect(self.request.path_info)
+    def get_success_url(self, *args, **kwargs):
+        return HttpResponseRedirect(self.request.path_info)
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            subject = 'Заявка с сайта'
-            message = '''Заявка со страницы {0} \n\n
-            Имя: {1}\n\n
-            Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
-            from_email = settings.EMAIL_HOST_USER
-            to_email = ['unklerufus@gmail.com']
-            send_mail(subject, message, from_email, to_email, fail_silently=False)
-            return HttpResponseRedirect(self.request.path_info)
-        return render(request, self.template_name, {'form': form})
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST)
+    #     if form.is_valid():
+    #         subject = 'Заявка с сайта'
+    #         message = '''Заявка со страницы {0} \n\n
+    #         Имя: {1}\n\n
+    #         Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
+    #         from_email = settings.EMAIL_HOST_USER
+    #         to_email = ['unklerufus@gmail.com']
+    #         send_mail(subject, message, from_email, to_email, fail_silently=False)
+    #         return HttpResponseRedirect(self.request.path_info)
+    #     return render(request, self.template_name, {'form': form})

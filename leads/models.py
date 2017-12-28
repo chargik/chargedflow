@@ -15,7 +15,7 @@ class Join(models.Model):
     def __str__(self):
         return self.lead_name
 
-    # def save(self, *args, **kwargs):
+    # def save(self):
     #     print(self.lead_name, self.telephone)
     #     subject = 'Заявка с сайта'
     #     message = '''Заявка со страницы  \n\n
@@ -24,4 +24,4 @@ class Join(models.Model):
     #     from_email = settings.EMAIL_HOST_USER
     #     to_email = ['unklerufus@gmail.com']
     #     send_mail(subject, message, from_email, to_email, fail_silently=False)
-    #     super(Join, self).save(args, **kwargs)
+    #     super(Join, self).save()
