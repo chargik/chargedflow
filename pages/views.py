@@ -4,9 +4,11 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
+
+from analytics.mixins import ObjectViewedMixin
 from leads.forms import JoinForm
 from .models import Tours
-from amocrm import BaseContact, fields
+
 
 
 class HomeView(TemplateView):
@@ -34,7 +36,7 @@ class IndTour(ListView):
     template_name = 'ind_tour.html'
     queryset = Tours.objects.filter(category='ind')     
 
-class TourDetailView(DetailView, SuccessMessageMixin, CreateView):
+class TourDetailView(DetailView, SuccessMessageMixin, CreateView, ObjectViewedMixin):
     template_name = 'tours/tours_detail.html'
     queryset = Tours.objects.all()
     model = Tours
@@ -47,15 +49,18 @@ class TourDetailView(DetailView, SuccessMessageMixin, CreateView):
     def get_success_url(self, *args, **kwargs):
         return HttpResponseRedirect(self.request.path_info)
 
-    # def post(self, request, *args, **kwargs):
-    #     form = self.form_class(request.POST)
-    #     if form.is_valid():
-    #         subject = 'Заявка с сайта'
-    #         message = '''Заявка со страницы {0} \n\n
-    #         Имя: {1}\n\n
-    #         Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
-    #         from_email = settings.EMAIL_HOST_USER
-    #         to_email = ['unklerufus@gmail.com']
-    #         send_mail(subject, message, from_email, to_email, fail_silently=False)
-    #         return HttpResponseRedirect(self.request.path_info)
-    #     return render(request, self.template_name, {'form': form})
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.url_field = self.request.path_info
+            instance.save()
+            subject = 'Заявка с сайта'
+            message = '''Заявка со страницы {0} \n\n
+            Имя: {1}\n\n
+            Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
+            from_email = settings.EMAIL_HOST_USER
+            to_email = ['unklerufus@gmail.com']
+            send_mail(subject, message, from_email, to_email, fail_silently=False)
+            return HttpResponseRedirect(self.request.path_info)
+        return render(request, self.template_name, {'form': form})

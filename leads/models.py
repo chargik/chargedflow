@@ -4,11 +4,12 @@ from django.db import models
 
 from pages.models import Tours
 
-# Create your models here.
+
 class Join(models.Model):
     lead_name = models.CharField(max_length=128)
     telephone = models.CharField(max_length=15)
-    # url_field = HttpRequest.get_full_path(self)
+    url_field = models.CharField(max_length=128, blank=True, null=True)
+    tour = models.ForeignKey(Tours, blank=True, null=True, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 

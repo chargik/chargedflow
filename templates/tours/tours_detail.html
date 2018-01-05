@@ -6,11 +6,11 @@
 <div class="container">
 <div class="row justify-content-sm-center">
     {% if object.title %}
-        <div {% if object.video_embed %} class="col-sm-6" {% else %} class="col" {% endif %}>
+        <div {% if object.video_embed %} class="col-md-6" {% else %} class="col" {% endif %}>
             <div class="card text-white">
                 <img src="{{ object.image.url }}" class='img-fluid card-img'>
-                <div class="card-img-overlay">
-                    <p class="card-title text-center" style="background: rgba(52, 58, 64, 0.7);">
+                <div class="card-img-overlay align-middle">
+                    <p class="card-title text-center align-middle" style="background: rgba(52, 58, 64, 0.7);">
                         {{ object.title }}
                     </p>
                 </div>
@@ -18,7 +18,7 @@
         </div>
     {% endif %}
     {% if object.video_embed %}
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <div class="embed-responsive embed-responsive-16by9">
             {{ object.video_embed|safe }}
           </div>

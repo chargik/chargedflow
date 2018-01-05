@@ -47,13 +47,14 @@
 
         $(".join-form").submit(function(e){
         e.preventDefault();
-        var this_ =$(this)
-        var joinFormAPIEndpont = "{% url 'form-join' %}";
+        var this_ = $(this)
+        var joinFormAPIEndpont = this_.attr("data-url") || window.location.href ;//"{% url 'form-join' %}";
         $.ajax({
             method: "POST",
             data: this_.serialize(),
             url: joinFormAPIEndpont,
             success: function(data){
+                // console.log(data);
                 didDismissModal=true;
                 $marketingModal.modal('hide')
                 this_.parent().html("<div class='text-center alert alert-success'>Спасибо за заявку, наш менеджер свяжется с Вами!</div>")

@@ -1,11 +1,9 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
-import re
 
 from .models import Join
 
-# BLACK_PHONE_LIST = ['5403311', '7502020']
 
 def validate_lead_name(value):
     lead_name_validator = RegexValidator(regex='^[а-яА-ЯёЁ ]+$')
@@ -16,10 +14,9 @@ def validate_lead_name(value):
     return value
 
 def validate_telephone(value):
-    clean_lead_phone = re.compile('[^0-9]')
-    lead_name_validator = RegexValidator(regex='((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}')
+    telephone_validator = RegexValidator(regex='((8|\+?375)[\- ]?)?(\(?\d{2,3}\)?[\- ]?)?[\d\- ]{7,10}')
     try:
-        lead_name_validator(value)
+        telephone_validator(value)
     except:
         raise ValidationError("Введите правильный телефон")
     return value

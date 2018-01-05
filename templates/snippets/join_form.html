@@ -1,4 +1,4 @@
-<form class="join-form" method="POST" action="">{% csrf_token %}
+<form class="join-form" method="POST" action="" data-url='{{ request.build_absolute_uri|safe }}'>{% csrf_token %}
 <div class="alert alert-danger alert-dismissible join-form-alert" style="display: none;">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span></button>
