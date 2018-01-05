@@ -2,6 +2,14 @@
 
 
 {% block content %}
-<h1>404 Page not Found</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>404 Такой страницы нет</h1>
+            <a href="{% url 'home' %}">Перейти на главную.</a>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

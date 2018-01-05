@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block head_title %}{{ block.super }} | Автобусные Туры{%endblock head_title %}
+{% block head_title %}{{ block.super }} | Автобусные Туры{% endblock head_title %}
 {% block content %}
 
 <div class="container">
@@ -20,7 +20,7 @@
                     <div class="card-body">
                     <h3 class="card-title"><a href='{{ obj.slug }}'>{{ obj.tour_name }}</a></h3>
                     <p class="card-text">{{ obj.short_title }}</p>
-                    <p class="text-muted">Обновлено: {{ obj.updated }}</p>
+                    <p class="text-muted"><small>Обновлено: {{ obj.updated }}</small></p>
                         <a href="{{ obj.slug }}" class="btn btn-primary btn-lg" role="button">Подробнее</a>
                     </div>
                 </div>

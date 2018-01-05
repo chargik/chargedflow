@@ -5,11 +5,19 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
-from analytics.mixins import ObjectViewedMixin
 from leads.forms import JoinForm
 from .models import Tours
 
 
+
+def send_join_mail(url, data):
+    subject = 'Заявка с сайта'
+    message = '''Заявка со страницы {0} \n\n
+    Имя: {1}\n\n
+    Телефон:{2}\n\n'''.format(url, data['lead_name'], data['telephone'])
+    from_email = settings.EMAIL_HOST_USER
+    to_email = ['unklerufus@gmail.com']
+    send_mail(subject, message, from_email, to_email, fail_silently=False)
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -36,7 +44,7 @@ class IndTour(ListView):
     template_name = 'ind_tour.html'
     queryset = Tours.objects.filter(category='ind')     
 
-class TourDetailView(DetailView, SuccessMessageMixin, CreateView, ObjectViewedMixin):
+class TourDetailView(DetailView, SuccessMessageMixin, CreateView):
     template_name = 'tours/tours_detail.html'
     queryset = Tours.objects.all()
     model = Tours
@@ -55,12 +63,6 @@ class TourDetailView(DetailView, SuccessMessageMixin, CreateView, ObjectViewedMi
             instance = form.save(commit=False)
             instance.url_field = self.request.path_info
             instance.save()
-            subject = 'Заявка с сайта'
-            message = '''Заявка со страницы {0} \n\n
-            Имя: {1}\n\n
-            Телефон:{2}\n\n'''.format(self.request.path_info, form.cleaned_data['lead_name'], form.cleaned_data['telephone'])
-            from_email = settings.EMAIL_HOST_USER
-            to_email = ['unklerufus@gmail.com']
-            send_mail(subject, message, from_email, to_email, fail_silently=False)
+            send_join_mail(self.request.path_info, form.cleaned_data)
             return HttpResponseRedirect(self.request.path_info)
         return render(request, self.template_name, {'form': form})
