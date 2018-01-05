@@ -28,7 +28,7 @@ SECRET_KEY = 'g+uua5w@g)xy6&3ahswe)wn0!)1jqg7wg=+o7zc#u@qfd#)bun'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.travellab.by', '18.218.24.149']
 
 EMAIL_HOST = email_settings.EMAIL_HOST
 EMAIL_HOST_USER = email_settings.EMAIL_HOST_USER
@@ -148,8 +148,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static-root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static')
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media')

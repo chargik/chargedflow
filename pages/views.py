@@ -16,7 +16,7 @@ def send_join_mail(url, data):
     Имя: {1}\n\n
     Телефон:{2}\n\n'''.format(url, data['lead_name'], data['telephone'])
     from_email = settings.EMAIL_HOST_USER
-    to_email = ['unklerufus@gmail.com']
+    to_email = ['unklerufus@gmail.com']#, 'travellabminsk@gmail.com']
     send_mail(subject, message, from_email, to_email, fail_silently=False)
 
 class HomeView(TemplateView):
